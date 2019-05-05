@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ajax_1_simple.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+	<h1>练习Ajax技术</h1>
+	请输入用户名：
+	<input type="text" />
+	<br>
+	<input type="button" value="点击显示用户名" onclick="showMessage()">
+
+	<h2>AJAX</h2>
+	<button type="button" onclick="showMessage()">请求数据</button>
+	<div id="myDiv"></div>
+
+	<script type="text/javascript">
+		function showMessage() {
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+					alert(xmlhttp.responseText);
+				}
+			}
+			xmlhttp.open("GET", "../BasicServlet", true);
+			xmlhttp.send();
+			console.log("点击了按钮");
+		}
+	
+		/* function loadXMLDoc() {
+			var xmlhttp;
+			if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp = new XMLHttpRequest();
+			} else { // code for IE6, IE5
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("GET", "/ajax/demo_get.asp", true);
+			xmlhttp.send();
+		} */
+	</script>
+</head>
+<body>
+
+
+
+
+</script>
+</body>
+</html>
