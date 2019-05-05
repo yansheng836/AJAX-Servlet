@@ -7,15 +7,21 @@
 <meta name="description" content="this is my page">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<link rel="stylesheet" type="text/css" href="../css/1basic.css">
 
 </head>
 <body>
-	<h1>简单AJAX--template</h1>
+	<h1>1.0 简单AJAX--template</h1>
 
-	<input type="button" value="点击请求数据" onclick="showMessage()">
 
-	<div id="myDiv"></div>
+	<div id="explaination">
+		<p>综合了第一个案例的模板</p>
+	</div>
+
+	<div id="box">
+		<input type="button" value="点击请求数据" onclick="showMessage()">
+		<div id="returnText"></div>
+	</div>
 
 	<script type="text/javascript">
 		function showMessage() {
@@ -39,7 +45,7 @@
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState == 4 && xhr.status == 200) {
 					console.log(xhr.responseText);
-					document.getElementById("myDiv").innerHTML = xhr.responseText;
+					document.getElementById("returnText").innerHTML = xhr.responseText;
 				}
 			}
 		}

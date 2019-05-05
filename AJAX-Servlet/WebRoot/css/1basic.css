@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+/* 第一项basic的统一样式，有些内容多的就里面再用内嵌样式覆盖该样式（外联样式）  */
+h1 {
+	text-align: center;
+	font-size: 50px;
+	color: transparent;
+	background-color: blue;
+	text-shadow: rgba(255, 255, 255, 0.5) 0 5px 6px,
+		rgba(255, 255, 255, 0.2) 1px 3px 3px;
+	-webkit-background-clip: text;
+	padding-top: 10px;
+	padding-bottom: 15px;
+}
+
+#explaination {
+	font-size: 25px;
+}
+
+#explaination p {
+	text-indent: 2em;
+}
+
+#box, #explaination {
+	width: 900px;
+	height: 300px;
+	/* border: 2px solid grey; */
+	margin: 0 auto; /* 让div居中显示 */
+}
+
+#box input {
+	width: 300px;
+	height: 50px;
+	font-size: 33px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: 300px;
+}
+
+#box #returnText {
+	font-size: 33px;
+}

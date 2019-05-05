@@ -7,7 +7,7 @@
 <meta name="description" content="this is my page">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<link rel="stylesheet" type="text/css" href="../css/1basic.css">
 <style type="text/css">
 p {
 	font-size: 25px;
@@ -17,10 +17,10 @@ p {
 </head>
 
 <body>
-	<h1>简单AJAX--open的post方法</h1>
+	<h1>1.4 简单AJAX--open的post方法</h1>
 
-	<div style="">
-		<h3>GET还是 POST？</h3>
+	<div id="explaination" style="height: 400px;">
+		<h3>GET还是 POST?</h3>
 		<ol style="font-size: 20px;">
 			<li>与 POST 相比，GET 更简单也更快，并且在大部分情况下都能用。</li>
 			<li>然而，在以下情况中，请使用 POST 请求：
@@ -31,19 +31,17 @@ p {
 				</ol>
 			</li>
 		</ol>
-		<h3>如何使用post</h3>
+		<h3>如何使用POST?</h3>
 		<ol style="font-size: 20px;">
 			<li>如果不传数据的话，把get方法换成post就好了</li>
 			<li>如果需要像 HTML 表单那样 POST 数据，请使用 setRequestHeader() 来添加 HTTP 头。然后在 send() 方法中规定您希望发送的数据：</li>
 		</ol>
-
-
 	</div>
-
-
-	<input type="button" value="点击请求数据" onclick="showMessage()">
-
-	<div id="myDiv"></div>
+	
+	<div id="box">
+		<input type="button" value="点击请求数据" onclick="showMessage()">
+		<div id="returnText"></div>
+	</div>
 
 	<script type="text/javascript">
 		function showMessage() {
@@ -68,7 +66,7 @@ p {
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState == 4 && xhr.status == 200) {
 					console.log(xhr.responseText);
-					document.getElementById("myDiv").innerHTML = xhr.responseText;
+					document.getElementById("returnText").innerHTML = xhr.responseText;
 				}
 			}
 		}

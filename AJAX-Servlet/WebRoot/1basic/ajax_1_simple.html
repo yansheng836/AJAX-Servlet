@@ -7,16 +7,26 @@
 <meta name="description" content="this is my page">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<link rel="stylesheet" type="text/css" href="../css/1basic.css">
 
 </head>
 
-<!-- 
-一、这里只是简单介绍一些简单的步骤:
+<body>
+	<h1>1.1简单AJAX--这里只是简单介绍一些简单的步骤:</h1>
+
+	<div id="explaination" style="height: 650px;">
+	<pre style="font-size: 20px;">
 1.创建XMLHttpRequest对象(注意兼容性问题)，用于和服务器交换数据。
 2.使用 XMLHttpRequest 对象的 open(method,url,async) 和 send() 方法向服务器发送请求（）
 	2.1.注意get和post方法的区别
-	2.2.当使用 async=true 时，请规定在响应处于 onreadystatechange 事件中的就绪状态时执行的函数
+	2.2.url为处理数据的服务器地址
+	2.3 async的值为true或者false，但是一般使用true， 
+		当您使用 async=false 时，请不要编写 onreadystatechange 函数 - 把代码放到 send() 语句后面即可：
+		xmlhttp.open("GET","test1.txt",false);
+		xmlhttp.send();
+		document.getElementById("returnText").innerHTML=xmlhttp.responseText;
+		
+	2.4.当使用 async=true 时，请规定在响应处于 onreadystatechange 事件中的就绪状态时执行的函数
 		属性	描述
 	onreadystatechange	存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。
 	readyState：存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
@@ -31,32 +41,33 @@
 		404: 未找到页面
 		
 3.使用 XMLHttpRequest 对象的 responseText 或 responseXML 属性取得服务器的响应
- -->
+	
+	</pre>
+		<p>仅仅是接收servlet传过来的数据，不进行任何处理。</p>
+	</div>
 
-<body>
-	<h1>简单AJAX</h1>
-
-	<input type="button" value="点击请求数据" onclick="showMessage()">
-
-	<div id="myDiv"></div>
+	<div id="box">
+		<input type="button" value="点击请求数据" onclick="showMessage()">
+		<div id="returnText"></div>
+	</div>
 
 	<script type="text/javascript">
-	/* console.log(); 是为了调试而添加的*/
+		/* console.log(); 是为了调试而添加的*/
 		function showMessage() {
 			/* 1.创建xhr对象 */
 			var xhr = new XMLHttpRequest();
-			console.log("xhr："+xhr);
-			
+			console.log("xhr：" + xhr);
+	
 			/* 2.发送请求 */
 			xhr.open("GET", "../SimpleServlet", true);
 			xhr.send();
 			console.log("点击了按钮");
-			
+	
 			/* 3.监听响应状态，当“请求已完成，响应已就绪” 且 响应码为200时，显示返回信息 */
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState == 4 && xhr.status == 200) {
 					console.log(xhr.responseText);
-					document.getElementById("myDiv").innerHTML = xhr.responseText;
+					document.getElementById("returnText").innerHTML = xhr.responseText;
 				}
 			}
 		}
