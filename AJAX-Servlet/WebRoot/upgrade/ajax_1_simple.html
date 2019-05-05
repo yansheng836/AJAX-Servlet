@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ajax_1_simple.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<!-- 
+二、兼容性问题
+
+1.所有现代浏览器（IE7+、Firefox、Chrome、Safari 以及 Opera）均内建 XMLHttpRequest 对象。
+创建 XMLHttpRequest 对象的语法：
+variable=new XMLHttpRequest();
+
+2.老版本的 Internet Explorer （IE5 和 IE6）使用 ActiveX 对象：
+variable=new ActiveXObject("Microsoft.XMLHTTP");
+
+3.综合考虑：为了应对所有的现代浏览器，包括 IE5 和 IE6，请检查浏览器是否支持 XMLHttpRequest 对象。
+如果支持，则创建 XMLHttpRequest 对象。如果不支持，则创建 ActiveXObject：
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+ -->
+
+<body>
+	<h1>练习Ajax技术</h1>
+	请输入用户名：
+	<input type="text" name="username" id="username"/>
+	<br>
+	<input type="button" value="点击显示用户名" onclick="showMessage()">
+
+	<h2>AJAX</h2>
+	<button type="button" onclick="showMessage()">请求数据</button>
+	<div id="myDiv"></div>
+
+	<script type="text/javascript">
+		function showMessage() {
+			var username = document.getElementById(username);
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+					alert(xmlhttp.responseText);
+				}
+			}
+			xmlhttp.open("GET", "../SimpleServlet", true);
+			xmlhttp.send(username);
+			/* console.log("点击了按钮"); */
+		}
+	</script>
+	
+</body>
+</html>

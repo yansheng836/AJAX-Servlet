@@ -11,53 +11,55 @@
 
 </head>
 
-<body>
-	<h1>练习Ajax技术</h1>
-	请输入用户名：
-	<input type="text" />
-	<br>
-	<input type="button" value="点击显示用户名" onclick="showMessage()">
+<!-- 
+一、这里只是简单介绍一些简单的步骤:
+1.创建XMLHttpRequest对象(注意兼容性问题)，用于和服务器交换数据。
+2.使用 XMLHttpRequest 对象的 open(method,url,async) 和 send() 方法向服务器发送请求（）
+	2.1.注意get和post方法的区别
+	2.2.当使用 async=true 时，请规定在响应处于 onreadystatechange 事件中的就绪状态时执行的函数
+		属性	描述
+	onreadystatechange	存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。
+	readyState：存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
+		0: 请求未初始化
+		1: 服务器连接已建立
+		2: 请求已接收
+		3: 请求处理中
+		4: 请求已完成，且响应已就绪
 
-	<h2>AJAX</h2>
-	<button type="button" onclick="showMessage()">请求数据</button>
+	status	
+		200: "OK"
+		404: 未找到页面
+		
+3.使用 XMLHttpRequest 对象的 responseText 或 responseXML 属性取得服务器的响应
+ -->
+
+<body>
+	<h1>简单AJAX</h1>
+
+	<input type="button" value="点击请求数据" onclick="showMessage()">
+
 	<div id="myDiv"></div>
 
 	<script type="text/javascript">
+	/* console.log(); 是为了调试而添加的*/
 		function showMessage() {
-			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function() {
-				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-					document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
-					alert(xmlhttp.responseText);
-				}
-			}
-			xmlhttp.open("GET", "../BasicServlet", true);
-			xmlhttp.send();
+			/* 1.创建xhr对象 */
+			var xhr = new XMLHttpRequest();
+			console.log("xhr："+xhr);
+			
+			/* 2.发送请求 */
+			xhr.open("GET", "../SimpleServlet", true);
+			xhr.send();
 			console.log("点击了按钮");
-		}
-	
-		/* function loadXMLDoc() {
-			var xmlhttp;
-			if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-				xmlhttp = new XMLHttpRequest();
-			} else { // code for IE6, IE5
-				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			xmlhttp.onreadystatechange = function() {
-				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-					document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+			
+			/* 3.监听响应状态，当“请求已完成，响应已就绪” 且 响应码为200时，显示返回信息 */
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					console.log(xhr.responseText);
+					document.getElementById("myDiv").innerHTML = xhr.responseText;
 				}
 			}
-			xmlhttp.open("GET", "/ajax/demo_get.asp", true);
-			xmlhttp.send();
-		} */
+		}
 	</script>
-</head>
-<body>
-
-
-
-
-</script>
 </body>
 </html>

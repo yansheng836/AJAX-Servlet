@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ajax_3_cache.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<!-- 
+在IE或者其他的很多浏览器中，如果你每次请求的地址是相同的，浏览器就不会去连接服务器而是去读取缓存，这
+样对于很多应用来时是非常好的，可以降低服务器的压力或者减少带宽的使用，但是对于ajax应用，很多都是必须保持
+时时的连接与服务器进行交互，所以需要使用一个小技巧，时间戳来使每次的请求地址都不同，从而跳过浏览器的缓存
+机制实现每次的请求服务器，这样的功能在图片验证码的时候也是比较常用的一种方法。
+ -->
+
+<body>
+	<h1>简单AJAX--解决浏览器cache问题：为url加时间戳</h1>
+	<p>在IE或者其他的很多浏览器中，如果你每次请求的地址是相同的，浏览器就不会去连接服务器而是去读取缓存，这样对于很多应用来时是非常好的，可以降低服务器的
+	压力或者减少带宽的使用，但是对于ajax应用，很多都是必须保持时时的连接与服务器进行交互，所以需要使用一个小技巧，时间戳来使每次的请求地址都不同，从而跳过
+	浏览器的缓存 机制实现每次的请求服务器，这样的功能在图片验证码的时候也是比较常用的一种方法。</p>
+
+	<input type="button" value="点击请求数据" onclick="showMessage()">
+
+	<div id="myDiv"></div>
+
+	<script type="text/javascript">
+		/* console.log(); 是为了调试而添加的*/
+		function showMessage() {
+			/* 1.创建xhr对象 */
+			var xhr;
+			if (window.XMLHttpRequest) {
+				xhr = new XMLHttpRequest(); // code for IE7+, Firefox, Chrome, Opera, Safari
+			} else {
+				xhr = new ActiveXObject("Microsoft.XMLHTTP"); // code for IE6, IE5
+			}
+			/* console.log("xhr：" + xhr); */
+	
+			/* 2.发送请求 */
+			/* 为url加时间戳  */
+			var timestamp = (new Date()).getTime();
+			console.log("timestamp：" + timestamp);
+			var url = "../SimpleServlet" + "?timestamp=" + timestamp;
+			xhr.open("GET", url, true);
+			xhr.send();
+	
+			/* 3.监听响应状态，当“请求已完成，响应已就绪” 且 响应码为200时，显示返回信息 */
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					console.log(xhr.responseText);
+					document.getElementById("myDiv").innerHTML = xhr.responseText;
+				}
+			}
+		}
+	</script>
+</body>
+</html>
