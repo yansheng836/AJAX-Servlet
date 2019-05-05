@@ -1,17 +1,104 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>index.html</title>
-	
-    <meta name="keywords" content="keyword1,keyword2,keyword3">
-    <meta name="description" content="this is my page">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    
-    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<head>
+<title>index.html</title>
 
-  </head>
-  
-  <body>
-    介绍Ajax技术 <br>
-  </body>
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my html-page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<style type="text/css">
+#container {
+	padding: 0px 50px; /* 第一个上下，第二个值左右 */
+}
+
+header {
+	text-align: center;
+}
+
+#headline {
+	font-size: 60px;
+	font-weight: bolder;
+	color: #96c4df;
+	text-shadow: 10px 5px 5px #91ded0;/* h-shadow v-shadow blur color :横竖阴影，模糊距离，颜色 */
+	padding-bottom: 5px;
+}
+
+article {
+	font-size: 20px;
+}
+
+.ol-li {
+	font-size: 25px;
+	margin-top: 10px;
+}
+
+.html-page {
+	font-size: 20px;
+}
+
+li a {
+	text-decoration: none;
+}
+</style>
+
+</head>
+
+<body>
+	<div id="container">
+		<header>
+			<div id="headline">AJAX-Servlet</div>
+			<img alt="langguage" src="https://img.shields.io/badge/language-java-green.svg">
+		</header>
+		<h1>介绍</h1>
+		<article>&nbsp;&nbsp;主要是介绍了AJAX技术的运用，从最简单的开始，一步步深入。 前端js先用原生JavaScript，后面也有用jQuery；服务器端采用servlet接收数据。</article>
+
+		<h1>目录</h1>
+		<ol>
+			<li class="ol-li">基础探索
+				<ul>
+					<li><a href="" title="" class="html-page">最简单的Ajax</a></li>
+					<li><a href="" title="" class="html-page">兼容浏览器</a></li>
+					<li><a href="" title="" class="html-page">浏览器缓存问题</a></li>
+					<li><a href="" title="" class="html-page">GET方法探索</a></li>
+					<li><a href="" title="" class="html-page">POST方法探索</a></li>
+				</ul>
+			</li>
+			<li class="ol-li">升级
+				<ul>
+					<li><a href="" title="" class="html-page">访问数据库</a></li>
+					<li><a href="" title="" class="html-page">访问数据库</a></li>
+				</ul>
+			</li>
+			<li class="ol-li">jQuery
+				<ul>
+					<li><a href="" title="" class="html-page">交互方法</a></li>
+					<li><a href="" title="" class="html-page">编程规范</a></li>
+				</ul>
+			</li>
+			<li class="ol-li">扩展-JSON
+				<ul>
+					<li><a href="" title="" class="html-page">在前端的应用</a></li>
+					<li><a href="" title="" class="html-page">在后台的处理</a></li>
+				</ul>
+			</li>
+			<li class="ol-li">具体案例
+				<ul>
+					<li><a href="" title="" class="html-page">验证注册账号是否存在</a></li>
+					<li><a href="" title="" class="html-page">验证登录密码是否与注册时一致</a></li>
+				</ul>
+			</li>
+		</ol>
+
+		<h1>构建</h1>
+		<article>
+			说明：本机测试环境：Windows10+myeclipse2015+jdk1.8
+			<ol>
+				<li>克隆该项目到本地,或直接下载zip压缩包到本地</li>
+				<li>用eclipse（或myeclipse等IDE）导入项目</li>
+			</ol>
+		</article>
+	</div>
+</body>
 </html>
