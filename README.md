@@ -1,6 +1,6 @@
 
 # AJAX-Servlet
-    ![langguage](https://img.shields.io/badge/language-java-green.svg)
+![langguage](https://img.shields.io/badge/language-java-green.svg)
     
 ## 介绍
     主要是介绍了AJAX技术的运用，从最简单的开始，一步步深入。
