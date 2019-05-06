@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ajax_1_simple.html</title>
+<title>1_ajax_1_simple.html</title>
 
 <meta name="keywords" content="keyword1,keyword2,keyword3">
 <meta name="description" content="this is my page">
@@ -14,17 +14,17 @@
 <body>
 	<h1>1.1简单AJAX--这里只是简单介绍一些简单的步骤:</h1>
 
-	<div id="explaination" style="height: 650px;">
+	<div class="explaination" style="height: 650px;">
 	<pre style="font-size: 20px;">
 1.创建XMLHttpRequest对象(注意兼容性问题)，用于和服务器交换数据。
 2.使用 XMLHttpRequest 对象的 open(method,url,async) 和 send() 方法向服务器发送请求（）
 	2.1.注意get和post方法的区别
 	2.2.url为处理数据的服务器地址
-	2.3 async的值为true或者false，但是一般使用true， 
+	2.3 async的值为true(异步)或者false(同步)，但是一般使用true。
 		当您使用 async=false 时，请不要编写 onreadystatechange 函数 - 把代码放到 send() 语句后面即可：
-		xmlhttp.open("GET","test1.txt",false);
-		xmlhttp.send();
-		document.getElementById("returnText").innerHTML=xmlhttp.responseText;
+		xhr.open("GET",url,false);
+		xhr.send();
+		document.getElementById("returnText").innerHTML=xhr.responseText;
 		
 	2.4.当使用 async=true 时，请规定在响应处于 onreadystatechange 事件中的就绪状态时执行的函数
 		属性	描述
@@ -46,7 +46,7 @@
 		<p>仅仅是接收servlet传过来的数据，不进行任何处理。</p>
 	</div>
 
-	<div id="box">
+	<div class="box">
 		<input type="button" value="点击请求数据" onclick="showMessage()">
 		<div id="returnText"></div>
 	</div>

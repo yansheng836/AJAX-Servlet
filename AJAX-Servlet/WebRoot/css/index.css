@@ -14,7 +14,7 @@ header {
 	color: #96c4df;
 	text-shadow: 10px 5px 5px #91ded0;
 	/* h-shadow v-shadow blur color :横竖阴影，模糊距离，颜色 */
-	padding-bottom: 5px;
+	padding-bottom: 10px;
 }
 
 article {

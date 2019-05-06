@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>1_ajax_4_post.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css" href="../css/1basic.css">
+<style type="text/css">
+p {
+	font-size: 25px;
+	text-indent: 2em;
+}
+</style>
+</head>
+
+<body>
+	<h1>1.4 简单AJAX--open的post方法</h1>
+
+	<div class="explaination" style="height: 400px;">
+		<h3>GET还是 POST?</h3>
+		<ol style="font-size: 20px;">
+			<li>与 POST 相比，GET 更简单也更快，并且在大部分情况下都能用。</li>
+			<li>然而，在以下情况中，请使用 POST 请求：
+				<ol>
+					<li>无法使用缓存文件（更新服务器上的文件或数据库）。</li>
+					<li>向服务器发送大量数据（POST 没有数据量限制）。</li>
+					<li>发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠。</li>
+				</ol>
+			</li>
+		</ol>
+		<h3>如何使用POST?</h3>
+		<ol style="font-size: 20px;">
+			<li>如果不传数据的话，把get方法换成post就好了。</li>
+			<li>如果需要像 HTML 表单那样 POST 数据，请使用 setRequestHeader() 来添加 HTTP 头。然后在 send(string) 方法中指定希望发送的数据到参数string：</li>
+		</ol>
+	</div>
+	
+	<div class="box">
+		<input type="button" value="不传递数据的post方法" onclick="showMessage()">
+		<div id="returnText"></div>
+	</div>
+	
+	<div class="box">
+		<input type="button" value="传递数据的post方法" onclick="showMessage1()">
+		<div id="returnText1"></div>
+	</div>
+
+	<script type="text/javascript">
+		function showMessage() {
+			/* 1.创建xhr对象 */
+			var xhr;
+			if (window.XMLHttpRequest) {
+				xhr = new XMLHttpRequest(); // code for IE7+, Firefox, Chrome, Opera, Safari
+			} else {
+				xhr = new ActiveXObject("Microsoft.XMLHTTP"); // code for IE6, IE5
+			}
+			/* console.log("xhr：" + xhr); */
+	
+			/* 2.发送请求 */
+			var url = "../SimpleServlet";
+			xhr.open("POST", url, true);
+			xhr.send();
+	
+			/* 3.监听响应状态，当“请求已完成，响应已就绪” 且 响应码为200时，显示返回信息 */
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					console.log(xhr.responseText);
+					document.getElementById("returnText").innerHTML = xhr.responseText;
+				}
+			}
+		}
+		
+		function showMessage1() {
+			/* 1.创建xhr对象 */
+			var xhr;
+			if (window.XMLHttpRequest) {
+				xhr = new XMLHttpRequest(); // code for IE7+, Firefox, Chrome, Opera, Safari
+			} else {
+				xhr = new ActiveXObject("Microsoft.XMLHTTP"); // code for IE6, IE5
+			}
+			/* console.log("xhr：" + xhr); */
+	
+			/* 2.发送请求 */
+			var url = "../PostServlet";
+			xhr.open("POST", url, true);
+	
+			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhr.send("fname=AlanMathison&lname=Turing");
+	
+			/* 3.监听响应状态，当“请求已完成，响应已就绪” 且 响应码为200时，显示返回信息 */
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					console.log(xhr.responseText);
+					document.getElementById("returnText1").innerHTML = xhr.responseText;
+				}
+			}
+		}
+	</script>
+</body>
+</html>

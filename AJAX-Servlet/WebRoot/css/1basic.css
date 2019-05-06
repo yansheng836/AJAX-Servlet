@@ -12,22 +12,22 @@ h1 {
 	padding-bottom: 15px;
 }
 
-#explaination {
+.explaination {
 	font-size: 25px;
 }
 
-#explaination p {
+.explaination p {
 	text-indent: 2em;
 }
 
-#box, #explaination {
+.box, .explaination {
 	width: 900px;
 	height: 300px;
 	/* border: 2px solid grey; */
 	margin: 0 auto; /* 让div居中显示 */
 }
 
-#box input {
+.box input {
 	width: 300px;
 	height: 50px;
 	font-size: 33px;
@@ -36,6 +36,6 @@ h1 {
 	margin-left: 300px;
 }
 
-#box #returnText {
+.box div{
 	font-size: 33px;
 }
