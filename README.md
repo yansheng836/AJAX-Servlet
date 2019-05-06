@@ -1,7 +1,9 @@
 
 # AJAX-Servlet
 ![langguage](https://img.shields.io/badge/language-java-green.svg)
-    
+![langguage](https://img.shields.io/badge/language-AJAX-green.svg)
+![langguage](https://img.shields.io/badge/language-HTML-green.svg)
+
 ## 介绍
     主要是介绍了AJAX技术的运用，从最简单的开始，一步步深入。
     前端js先用原生JavaScript，后面也有用jQuery；服务器端采用servlet接受数据
@@ -26,8 +28,8 @@
     - [在前端的应用](#在前端的应用)
     - [在后台的处理](#在后台的处理)
 - [具体案例](#具体案例)
-    - [验证注册账号是否存在](#验证注册账号是否存在)
-    - [验证登录密码是否与注册时一致](#验证登录密码是否与注册时一致)
+    - 验证注册账号是否存在
+    - 验证登录密码是否与注册时一致
    
 
 ## 构建
