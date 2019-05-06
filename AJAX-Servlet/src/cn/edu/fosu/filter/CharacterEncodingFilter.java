@@ -9,12 +9,13 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-public class FilterDemo implements Filter {
+public class CharacterEncodingFilter implements Filter {
 
 	@Override
-	public void destroy() {
+	public void init(FilterConfig chain) throws ServletException {
 		// TODO Auto-generated method stub
-		System.out.println("destroy……");
+		System.out.println("init CharacterEncodingFilter……");
+		System.out.println();
 	}
 
 	@Override
@@ -26,14 +27,13 @@ public class FilterDemo implements Filter {
 		//过滤器过滤响应编码
 		response.setContentType("text/html;charset=UTF-8");
 		chain.doFilter(request, response);
-
 	}
 
 	@Override
-	public void init(FilterConfig chain) throws ServletException {
+	public void destroy() {
 		// TODO Auto-generated method stub
-		System.out.println("init……");
-
+		System.out.println("destroy CharacterEncodingFilter……");
+		System.out.println();
 	}
 
 }

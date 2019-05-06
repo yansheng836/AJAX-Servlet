@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>return_button.html</title>
+<!-- 最简单的返回顶部和返回主页的小控件，直接使用超链接，没有设置特效 -->
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+<style type="text/css">
+/* * {
+	margin: 0px;
+	padding: 0px;
+} */
+
+#home, #toTop {
+	width: 50px;
+	height: 50px;
+	background-color: #dedede;
+	border-radius: 3px;
+	transition: background .5s ease-in-out;
+    -webkit-transition: background .5s ease-in-out;
+}
+/* 固定两个按钮  position: fixed; */
+#toTop {
+	position: fixed;
+	bottom: 63px;
+	right: 10px;
+}
+
+#home {
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+}
+
+#home:HOVER, #toTop:HOVER{
+	background-color: #bbbbbb;
+}
+
+#home:HOVER, #toTop:HOVER{
+	background-color: #999999;
+}
+
+
+</style>
+</head>
+
+<body>
+
+	<div id="toTop" onclick="">
+		<a href="#">
+			<img alt="返回顶部" src="/AJAX-Servlet/images/jump_to_top.png" />
+		</a>
+	</div>
+	<div id="home" onclick="">
+		<a href="/AJAX-Servlet/index.html">
+			<img alt="返回主页" src="/AJAX-Servlet/images/home.png" />
+		</a>
+	</div>
+
+</body>
+</html>
