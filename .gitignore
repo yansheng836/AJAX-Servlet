@@ -1,3 +1,8 @@
+# backup file
+#.gitignore.bak,README.md.bak
+*.bak
+
+
 # Compiled class file
 *.class
 
