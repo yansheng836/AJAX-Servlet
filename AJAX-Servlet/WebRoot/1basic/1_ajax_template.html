@@ -1,92 +1,95 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>1_ajax_template.html</title>
+    <title>1_ajax_template.html</title>
 
-<meta name="keywords" content="keyword1,keyword2,keyword3">
-<meta name="description" content="this is my page">
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" type="text/css" href="../css/1basic.css">
+    <link rel="stylesheet" type="text/css" href="../css/1basic.css">
 
 </head>
+
 <body>
-	<h1>1.0 简单AJAX--template</h1>
+    <h1>1.0 简单AJAX--template</h1>
 
 
-	<div class="explaination">
-		<p>综合了第一个案例的模板</p>
-	</div>
+    <div class="explaination">
+        <p>综合了第一个案例的模板</p>
+    </div>
 
-	<div class="box">
-		<input type="button" value="get方法模板" onclick="showMessage()">
-		<div id="returnText"></div>
-	</div>
-	
-	<div class="box">
-		<input type="button" value="post方法模板" onclick="showMessage1()">
-		<div id="returnText1"></div>
-	</div>
+    <div class="box">
+        <input type="button" value="get方法模板" onclick="showMessage()">
+        <div id="returnText"></div>
+    </div>
 
-	<script type="text/javascript">
-		function showMessage() {
-			/* 1.创建xhr对象 */
-			var xhr;
-			if (window.XMLHttpRequest) {
-				xhr = new XMLHttpRequest(); // code for IE7+, Firefox, Chrome, Opera, Safari
-			} else {
-				xhr = new ActiveXObject("Microsoft.XMLHTTP"); // code for IE6, IE5
-			}
-			/* console.log("xhr：" + xhr); */
-	
-			/* 2.发送GET请求 */
-			var timestamp = (new Date()).getTime();
-			console.log("timestamp：" + timestamp);
-			var url = "../SimpleServlet" + "?timestamp=" + timestamp;
-			xhr.open("GET", url, true);
-			xhr.send();
-	
-			/* 3.监听响应状态，当“请求已完成，响应已就绪” 且 响应码为200时，显示返回信息 */
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState == 4 && xhr.status == 200) {
-					console.log(xhr.responseText);
-					document.getElementById("returnText").innerHTML = xhr.responseText;
-				}
-			}
-		}
-		
-		function showMessage1() {
-			/* 1.创建xhr对象 */
-			var xhr;
-			if (window.XMLHttpRequest) {
-				xhr = new XMLHttpRequest(); // code for IE7+, Firefox, Chrome, Opera, Safari
-			} else {
-				xhr = new ActiveXObject("Microsoft.XMLHTTP"); // code for IE6, IE5
-			}
-			/* console.log("xhr：" + xhr); */
-	
-			/* 2.发送POST请求 */
-			var timestamp = (new Date()).getTime();
-			console.log("timestamp：" + timestamp);
-			var url = "../PostServlet" + "?timestamp=" + timestamp;
-			xhr.open("POST", url, true);
-			var string = "fname=AlanMathison&lname=Turing";
-			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhr.send(string);
-	
-			/* 3.监听响应状态，当“请求已完成，响应已就绪” 且 响应码为200时，显示返回信息 */
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState == 4 && xhr.status == 200) {
-					console.log(xhr.responseText);
-					document.getElementById("returnText1").innerHTML = xhr.responseText;
-				}
-			}
-		}
-	</script>
-	
-	<!-- 返回按钮（顶部，主页） -->
-	<div id="returnButton"></div>
-	<script src="/AJAX-Servlet/js/jQuery-3.3.0.js"></script>
-	<script src="/AJAX-Servlet/js/return_button.js"></script>
+    <div class="box">
+        <input type="button" value="post方法模板" onclick="showMessage1()">
+        <div id="returnText1"></div>
+    </div>
+
+    <script type="text/javascript">
+        function showMessage() {
+            /* 1.创建xhr对象 */
+            var xhr;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest(); // code for IE7+, Firefox, Chrome, Opera, Safari
+            } else {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP"); // code for IE6, IE5
+            }
+            /* console.log("xhr：" + xhr); */
+
+            /* 2.发送GET请求 */
+            var timestamp = (new Date()).getTime();
+            console.log("timestamp：" + timestamp);
+            var url = "../SimpleServlet" + "?timestamp=" + timestamp;
+            xhr.open("GET", url, true);
+            xhr.send();
+
+            /* 3.监听响应状态，当“请求已完成，响应已就绪” 且 响应码为200时，显示返回信息 */
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.responseText);
+                    document.getElementById("returnText").innerHTML = xhr.responseText;
+                }
+            }
+        }
+
+        function showMessage1() {
+            /* 1.创建xhr对象 */
+            var xhr;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest(); // code for IE7+, Firefox, Chrome, Opera, Safari
+            } else {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP"); // code for IE6, IE5
+            }
+            /* console.log("xhr：" + xhr); */
+
+            /* 2.发送POST请求 */
+            var timestamp = (new Date()).getTime();
+            console.log("timestamp：" + timestamp);
+            var url = "../PostServlet" + "?timestamp=" + timestamp;
+            xhr.open("POST", url, true);
+            var string = "fname=AlanMathison&lname=Turing";
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send(string);
+
+            /* 3.监听响应状态，当“请求已完成，响应已就绪” 且 响应码为200时，显示返回信息 */
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.responseText);
+                    document.getElementById("returnText1").innerHTML = xhr.responseText;
+                }
+            }
+        }
+    </script>
+
+    <!-- 返回按钮（顶部，主页） -->
+    <div id="returnButton"></div>
+    <script src="/AJAX-Servlet/js/jQuery-3.3.0.js"></script>
+    <script src="/AJAX-Servlet/js/return_button.js"></script>
 </body>
+
 </html>
