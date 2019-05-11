@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.edu.fosu.sql.FindByUsername;
+
 /**
  * Servlet implementation class RegisterServlet
  */
@@ -20,10 +22,21 @@ public class RegisterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		String username = request.getParameter("username");
+		String returString = "";
 		System.out.println("username:" + username);
-		response.getWriter().append("<br/>").append("username: " + username);
+
+		boolean bool = FindByUsername.findByUsername(username);
+		System.out.println("bool:" + bool);
+		if (bool) {
+			returString = "该用户名已存在！";
+		} else {
+			returString = "该用户名可以注册！";
+		}
+		System.out.println(returString);
+
+		response.getWriter().append("username: " + username).append("<br/>").append(returString);
 
 	}
 

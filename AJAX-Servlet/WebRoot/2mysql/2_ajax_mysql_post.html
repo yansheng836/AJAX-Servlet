@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2_ajax_mysql_post.html</title>
+
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+    <link rel="stylesheet" type="text/css" href="../css/1basic.css">
+    <<link rel="stylesheet" type="text/css" href="../css/2mysql.css">
+
+</head>
+
+<body>
+    <div id="user_reg">用户注册:</div>
+    <form action="RegisterServlet" method="post" name="form" onsubmit="" style="border: 2px solid #CCCCCC;">
+        <table>
+            <tr>
+                <td>Username：</td>
+                <td><input type="text" id="username" name="username" placeholder="1-10个字符或文字" onblur="testUsername()" />
+                </td>
+            </tr>
+            <tr>
+                <td>Password：</td>
+                <td><input type="password" id="password" name="password" placeholder="1-13个字符" /></td>
+            </tr>
+            <tr>
+                <td>Confirm：</td>
+                <td><input type="password" id="ispassword" name="ispassword" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" id="submit_form" value="注册" /> <input type="reset" value="重置" />
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <div class="box">
+        <div id="returnText"></div>
+    </div>
+
+    <script>
+
+        function testUsername() {
+            var username = document.getElementById("username").value;
+            console.log("username:" + username);
+
+            /* 1.创建xhr对象 */
+            var xhr;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest(); // code for IE7+, Firefox, Chrome, Opera, Safari
+            } else {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP"); // code for IE6, IE5
+            }
+            /* console.log("xhr：" + xhr); */
+
+            /* 2.发送POST请求 */
+            var timestamp = (new Date()).getTime();
+            console.log("timestamp：" + timestamp);
+            var url = "../RegisterServlet" + "?timestamp=" + timestamp;
+            xhr.open("POST", url, true);
+            var string = "username="+username;
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send(string);
+
+            /* 3.监听响应状态，当“请求已完成，响应已就绪” 且 响应码为200时，显示返回信息 */
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.responseText);
+                    document.getElementById("returnText").innerHTML = xhr.responseText;
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
