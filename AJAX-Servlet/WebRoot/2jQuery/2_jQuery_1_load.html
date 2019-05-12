@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>3_ajax_jQuery_load.html</title>
+    <title>2_jQuery_1_load.html</title>
 
     <meta name="keywords" content="keyword1,keyword2,keyword3">
     <meta name="description" content="this is my page">
@@ -13,31 +13,64 @@
 </head>
 
 <body>
-    <h1>3.0 简单ajax_jQuery</h1>
-
+    <h1>1、$().load(url, [data], [callback])</h1>
 
     <div class="explaination">
-        <p>综合了第一个案例的模板</p>
         <pre>
-load(url, [data], [callback])
-load(url, )
+// 1.不传递数据的load方法
+$("#button").click(function () {
+    console.log("button元素发生click事件。");
+    // load(url, [data], [callback])
+    // 可选的 callback 参数规定当 load()方法完成后所要允许的回调函数。回调函数可以设置不同的参数：
+    // responseTxt - 包含调用成功时的结果内容
+    // statusTXT - 包含调用的状态
+    // xhr - 包含 XMLHttpRequest 对象
+    $("#returnText").load("../SimpleServlet",function(responseTxt, statusTxt, xhr) {
+         if (statusTxt == "success") {
+             console.log("外部内容加载成功！");
+             console.log("responseTxt：" + responseTxt);
+            // $("#returnText").html("jQuery--responseTxt：" + responseTxt);
+         } else {               //statusTxt == "error"
+             console.log("Error: " + xhr.status + ": " + xhr.statusText);
+        }
+    });
+});</pre>
+    </div>
 
-可选的 callback 参数规定当 load() 方法完成后所要允许的回调函数。回调函数可以设置不同的参数：
-responseTxt - 包含调用成功时的结果内容
-statusTXT - 包含调用的状态
-xhr - 包含 XMLHttpRequest 对象
+    <div class="box">
+        <input type="button" value="1.不传递数据的load方法" id="button">
+        <div id="returnText"></div>
+    </div>
 
-
+    <div class="explaination">
+        <pre>
+// 2.传递数据的load方法
+$("#button").click(function () {
+    // 以键值对形式传递数据
+    $("#returnText").load("../PostServlet", { "fname": "AlanMathison", "lname": "Turing" }, 
+    function (responseTxt, statusTxt, xhr) {
+         if (statusTxt == "success") {
+             console.log("外部内容加载成功！");
+             console.log("responseTxt：" + responseTxt);
+            // $("#returnText").html("jQuery--responseTxt：" + responseTxt);
+         } else {               //statusTxt == "error"
+             console.log("Error: " + xhr.status + ": " + xhr.statusText);
+        }
+    });
+});
         </pre>
     </div>
 
     <div class="box">
-        <input type="button" value="get方法模板" id="button">
-        <div id="returnText"></div>
+        <input type="button" value="2.传递数据的load方法" id="button1">
+        <div id="returnText1"></div>
     </div>
+
 
     <script src="/AJAX-Servlet/js/jQuery-3.3.0.js"></script>
     <script>
+        // 1.简单、不传递数据的load方法：
+        // load("../SimpleServlet", function (responseTxt, statusTxt, xhr) {})
         $("#button").click(function () {
             console.log("button元素发生click事件。");
 
@@ -56,7 +89,33 @@ xhr - 包含 XMLHttpRequest 对象
                 if (statusTxt == "success") {
                     console.log("外部内容加载成功！");
                     console.log("responseTxt：" + responseTxt);
-                    $("#returnText").html("jQuery--responseTxt：" + responseTxt);
+                    // $("#returnText").html("jQuery--responseTxt：" + responseTxt);
+                } else {               //statusTxt == "error"
+                    console.log("Error: " + xhr.status + ": " + xhr.statusText);
+                }
+            });
+        });
+
+        // 2.传递数据的load方法：
+        // load("../PostServlet",{key:value,key1:value1} function (responseTxt, statusTxt, xhr) {})
+        $("#button1").click(function () {
+            console.log("button1元素发生click事件。");
+
+            // load(url, [data], [callback])
+            // 可选的 callback 参数规定当 load() 方法完成后所要允许的回调函数。回调函数可以设置不同的参数：
+            // responseTxt - 包含调用成功时的结果内容
+            // statusTXT - 包含调用的状态
+            // xhr - 包含 XMLHttpRequest 对象
+            // fname=AlanMathison&lname=Turing
+            $("#returnText1").load("../PostServlet", { "fname": "AlanMathison", "lname": "Turing" }, function (responseTxt, statusTxt, xhr) {
+                console.log("responseTxt：" + responseTxt);
+                console.log("statusTxt：" + statusTxt); //success
+                console.log("xhr：" + xhr);
+                console.log(xhr);
+                console.log(xhr.readyState);
+                console.log(xhr.status);
+                if (statusTxt == "success") {
+                    console.log("外部内容加载成功！");
                 } else {               //statusTxt == "error"
                     console.log("Error: " + xhr.status + ": " + xhr.statusText);
                 }
@@ -64,7 +123,6 @@ xhr - 包含 XMLHttpRequest 对象
         });
 
     </script>
-    
 
     <!-- 返回按钮（顶部，主页） -->
     <div id="returnButton"></div>

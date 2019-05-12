@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2_jQuery_2_ajax.html</title>
+
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="../css/1basic.css">
+
+</head>
+
+<body>
+    <h1>2、jQuery.ajax(url,[settings])</h1>
+
+
+    <div class="explaination" ><!--style="display:inline-block;margin-left: 250px;"-->
+
+        <pre>
+// 1.不传递数据的ajax的get方法
+$("#button").click(function () {
+    var url = "../SimpleServlet";
+    xht = $.ajax({
+        url: url,
+        async: true,  //默认为true,异步
+        type: "GET",  //String(默认: "GET") 请求方式 ("POST" 或 "GET")
+        cache: false, //设置为 false 将不缓存此页面。
+        success: function (responseTxt, statusTxt, xhr) {
+            if (statusTxt == "success") {
+                console.log("外部内容加载成功！");
+                $("#returnText").html(responseTxt);
+            } else { //statusTxt == "error"
+                console.log("Error: " + xhr.status + ": " + xhr.statusText);
+            }
+        },
+        error: function () {
+            console.log("请求数据失败！");
+        }
+    });
+});
+
+// 2.传递数据的ajax的post方法:参考load方法即可。
+</pre>
+
+    </div>
+
+    <div class="box">
+        <input type="button" value="1.不传递数据的ajax的get方法" id="button">
+        <div id="returnText"></div>
+    </div>
+
+    <script src="/AJAX-Servlet/js/jQuery-3.3.0.js"></script>
+    <script>
+        $("#button").click(function () {
+            console.log("button元素失去焦点时触发 blur 事件。");
+
+            var url = "../SimpleServlet";
+            xht = $.ajax({
+                url: url,
+                async: true, //默认为true
+                type: "GET",  //String(默认: "GET") 请求方式 ("POST" 或 "GET")
+
+                cache: false,   //Boolean(默认: true,dataType为script和jsonp时默认为false) jQuery 1.2 新功能，设置为 false 将不缓存此页面。
+
+                success: function (responseTxt, statusTxt, xhr) {
+                    console.log("responseTxt：" + responseTxt);
+                    console.log("statusTxt：" + statusTxt); //success
+                    console.log("xhr：" + xhr);
+                    console.log(xhr);
+                    console.log(xhr.readyState);
+                    console.log(xhr.status);
+                    if (statusTxt == "success") {
+                        console.log("外部内容加载成功！");
+                        $("#returnText").html(responseTxt);
+                    } else {               //statusTxt == "error"
+                        console.log("Error: " + xhr.status + ": " + xhr.statusText);
+                    }
+                },
+                error: function () {
+                    console.log("请求数据失败！");
+                }
+            });
+        });
+    </script>
+
+    <!-- 返回按钮（顶部，主页） -->
+    <div id="returnButton"></div>
+    <script src="/AJAX-Servlet/js/return_button.js"></script>
+</body>
+
+</html>

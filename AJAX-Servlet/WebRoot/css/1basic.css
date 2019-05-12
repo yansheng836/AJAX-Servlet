@@ -12,23 +12,27 @@ h1 {
 	padding-bottom: 15px;
 }
 
-.explaination {
-	font-size: 25px;
-}
-
 .explaination p {
-	text-indent: 2em;
+    text-indent: 2em;
+    font-size: 25px;
 }
 
 .box, .explaination {
-	width: 900px;
-	height: 300px;
-	/* border: 2px solid grey; */
-	margin: 0 auto; /* 让div居中显示 */
+	width: 1100px;
+    /* border: 2px solid grey;  */
+    margin-top: 10px; /* 让div居中显示:margin: 0 auto; */
+    display:inline-block;/* 让内容撑开盒子，只设置宽度，不设置高度  */
+    margin-left: 200px;
 }
 
+.explaination pre {
+    font: 20px Source Code Pro;
+    background-color: #efefef;
+}
+
+
 .box input {
-	width: 300px;
+	/* width: 370px; 不设宽度，由内容撑开*/
 	height: 50px;
 	font-size: 33px;
 	margin-top: 30px;
