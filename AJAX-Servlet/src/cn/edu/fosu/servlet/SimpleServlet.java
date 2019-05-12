@@ -22,6 +22,7 @@ public class SimpleServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(this.getServletName());
 		response.getWriter().append("<br/>现在的时间是：").append((new Date()).toString());
+		System.out.println("访问了：SimpleServlet。");
 		
 		//测试重定向到浏览器:url+timestamp
 		/*long timestamp = System.currentTimeMillis();

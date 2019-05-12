@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>3_ajax_jQuery_load.html</title>
+
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="../css/1basic.css">
+
+</head>
+
+<body>
+    <h1>3.0 简单ajax_jQuery</h1>
+
+
+    <div class="explaination">
+        <p>综合了第一个案例的模板</p>
+        <pre>
+load(url, [data], [callback])
+load(url, )
+
+可选的 callback 参数规定当 load() 方法完成后所要允许的回调函数。回调函数可以设置不同的参数：
+responseTxt - 包含调用成功时的结果内容
+statusTXT - 包含调用的状态
+xhr - 包含 XMLHttpRequest 对象
+
+
+        </pre>
+    </div>
+
+    <div class="box">
+        <input type="button" value="get方法模板" id="button">
+        <div id="returnText"></div>
+    </div>
+
+    <script src="/AJAX-Servlet/js/jQuery-3.3.0.js"></script>
+    <script>
+        $("#button").click(function () {
+            console.log("button元素发生click事件。");
+
+            // load(url, [data], [callback])
+            // 可选的 callback 参数规定当 load() 方法完成后所要允许的回调函数。回调函数可以设置不同的参数：
+            // responseTxt - 包含调用成功时的结果内容
+            // statusTXT - 包含调用的状态
+            // xhr - 包含 XMLHttpRequest 对象
+            $("#returnText").load("../SimpleServlet", function (responseTxt, statusTxt, xhr) {
+                console.log("responseTxt：" + responseTxt);
+                console.log("statusTxt：" + statusTxt); //success
+                console.log("xhr：" + xhr);
+                console.log(xhr);
+                console.log(xhr.readyState);
+                console.log(xhr.status);
+                if (statusTxt == "success") {
+                    console.log("外部内容加载成功！");
+                    console.log("responseTxt：" + responseTxt);
+                    $("#returnText").html("jQuery--responseTxt：" + responseTxt);
+                } else {               //statusTxt == "error"
+                    console.log("Error: " + xhr.status + ": " + xhr.statusText);
+                }
+            });
+        });
+
+    </script>
+    
+
+    <!-- 返回按钮（顶部，主页） -->
+    <div id="returnButton"></div>
+    <script src="/AJAX-Servlet/js/return_button.js"></script>
+</body>
+
+</html>

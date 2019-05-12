@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>3_ajax_jQuery_simple.html</title>
+
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="../css/1basic.css">
+
+</head>
+
+<body>
+    <h1>3.0 简单ajax_jQuery</h1>
+
+
+    <div class="explaination">
+        <p>综合了第一个案例的模板</p>
+    </div>
+
+    <div class="box">
+        <input type="button" value="get方法模板" id="button">
+        <div id="returnText"></div>
+    </div>
+
+    <script src="/AJAX-Servlet/js/jQuery-3.3.0.js"></script>
+    <script>
+        $("#button").click(function () {
+            console.log("button元素失去焦点时触发 blur 事件。");
+
+            var url = "../SimpleServlet";
+            xht = $.ajax({
+                url: url,
+                async: true,
+            });
+
+            console.log("xht:"+xht);
+            console.log(xht);
+
+            var returnText = xht.responseText;
+            console.log("xht.responseText:"+returnText);
+            $("#returnText").html(xht.responseText);
+        });
+
+    </script>
+
+
+    <!-- 返回按钮（顶部，主页） -->
+    <div id="returnButton"></div>
+    <script src="/AJAX-Servlet/js/return_button.js"></script>
+</body>
+
+</html>
