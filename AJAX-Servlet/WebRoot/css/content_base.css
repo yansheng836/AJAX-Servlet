@@ -25,7 +25,11 @@ h1 {
     margin-left: 200px;
 }
 
-.explaination pre {
+/* .explaination pre {
+    font: 20px Source Code Pro;
+    background-color: #efefef;
+} */
+pre {
     font: 20px Source Code Pro;
     background-color: #efefef;
 }

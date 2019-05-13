@@ -2,25 +2,25 @@
 <html>
 
 <head>
-    <title>2_jQuery_3_get.html</title>
+    <title>2_jQuery_4_post.html</title>
 
     <meta name="keywords" content="keyword1,keyword2,keyword3">
     <meta name="description" content="this is my page">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <link rel="stylesheet" type="text/css" href="../css/1basic.css">
+    <link rel="stylesheet" type="text/css" href="../css/content_base.css">
 
 </head>
 
 <body>
-    <h1>3、jQuery.get(url, [data], [callback], [type])</h1>
+    <h1>4、jQuery.post(url, [data], [callback], [type])</h1>
 
 
     <div class="explaination">
         <pre>
 // 不传递数据的get()方法
 $("#button").click(function () {
-      $.get("../SimpleServlet", function (responseTxt, statusTxt, xhr) {
+      $.post("../PostServlet", { "fname": "AlanMathison", "lname": "Turing" },function (responseTxt, statusTxt, xhr) {
             if (statusTxt == "success") {
                  console.log("外部内容加载成功！");
                  console.log("responseTxt：" + responseTxt);
@@ -33,9 +33,10 @@ $("#button").click(function () {
     </div>
 
     <div class="box">
-        <input type="button" value="jQuery.get()" id="button">
+        <input type="button" value="jQuery.post()" id="button">
         <div id="returnText"></div>
     </div>
+
 
     <script src="/AJAX-Servlet/js/jQuery-3.3.0.js"></script>
     <script>
@@ -47,7 +48,7 @@ $("#button").click(function () {
         // type:返回内容格式，xml, html, script, json, text, _default。
 
         $("#button").click(function () {
-            $.get("../SimpleServlet", function (responseTxt, statusTxt, xhr) {
+            $.post("../PostServlet", { "fname": "AlanMathison", "lname": "Turing" },function (responseTxt, statusTxt, xhr) {
                 console.log("responseTxt：" + responseTxt);
                 console.log("statusTxt：" + statusTxt); //success
                 console.log("xhr：" + xhr);
